@@ -1,5 +1,10 @@
+**/elm-package.json linguist-vendored
+**/package.json linguist-vendored
 **/package.yaml linguist-vendored
 **/stack.yaml linguist-vendored
+**/bower.json linguist-vendored
+**/*_test.exs linguist-vendored
 **/README.md linguist-vendored
 **/*.cabal linguist-vendored
+**/tests/ linguist-vendored
 **/test/ linguist-vendored

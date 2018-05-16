@@ -1,0 +1,19 @@
+{
+  "name": "bob",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "output"
+  ],
+  "dependencies": {
+    "purescript-prelude": "^3.0.0",
+    "purescript-strings": "^3.3.1",
+    "purescript-stringutils": "^0.0.6",
+    "purescript-console": "^3.0.0"
+  },
+  "devDependencies": {
+    "purescript-psci-support": "^3.0.0",
+    "purescript-test-unit": "^11.0.0"
+  }
+}

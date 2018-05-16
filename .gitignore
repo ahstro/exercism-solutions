@@ -1,1 +1,6 @@
+**/bower_components/
+**/.psci_modules/
+**/.pulp-cache/
 **/.stack-work/
+**/elm-stuff/
+**/output/
