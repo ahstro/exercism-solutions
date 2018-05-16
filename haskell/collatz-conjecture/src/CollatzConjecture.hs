@@ -6,11 +6,9 @@ import Data.Maybe (Maybe(Just, Nothing))
 
 collatz :: Integer -> Maybe Integer
 collatz n
-  | n < 1     = Nothing
-  | otherwise = Just $ collatz' 0 n
-
-collatz' :: Integer -> Integer -> Integer
-collatz' count n
-  | n == 1    = count
-  | even n    = collatz' (succ count) (n `div` 2)
-  | otherwise = collatz' (succ count) (n * 3 + 1)
+  | n <= 0    = Nothing
+  | n == 1    = Just 0
+  | even n    = next (n `div` 2)
+  | otherwise = next (3 * n + 1)
+  where
+    next = fmap succ . collatz
