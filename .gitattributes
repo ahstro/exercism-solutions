@@ -1,0 +1,5 @@
+**/package.yaml linguist-vendored
+**/stack.yaml linguist-vendored
+**/README.md linguist-vendored
+**/*.cabal linguist-vendored
+**/test/ linguist-vendored
