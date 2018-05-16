@@ -6,5 +6,5 @@
 **/*_test.exs linguist-vendored
 **/README.md linguist-vendored
 **/*.cabal linguist-vendored
-**/tests/ linguist-vendored
-**/test/ linguist-vendored
+**/tests/** linguist-vendored
+**/test/** linguist-vendored
