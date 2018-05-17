@@ -1,9 +1,9 @@
 module DNA (toRNA) where
 
-import Data.Traversable (traverse)
+import Data.Traversable (mapM)
 
 toRNA :: String -> Maybe String
-toRNA = traverse toRNA'
+toRNA = mapM toRNA'
 
 toRNA' :: Char -> Maybe Char
 toRNA' n =
