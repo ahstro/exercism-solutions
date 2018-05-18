@@ -1,19 +1,18 @@
 module Acronym (abbreviate) where
 
-import Data.Char (isLower, isUpper, toUpper)
-import Data.Maybe (fromMaybe)
+import Data.Char (toUpper, isUpper, isAlpha)
+import Data.Maybe (catMaybes)
 
 abbreviate :: String -> String
-abbreviate = reverse . snd . foldl getAbrChars (Nothing, [])
+abbreviate = map toUpper . catMaybes . mapWithPrevious getAcronymLetter
 
-getAbrChars (lastChar, acc) currChar =
-  ( Just currChar
-  , if
-       lastChar == Just ' ' ||
-       lastChar == Just '-' ||
-       ((fromMaybe True $ fmap isLower lastChar) && isUpper currChar)
-    then
-      toUpper currChar : acc
-    else
-      acc
-  )
+mapWithPrevious :: (Maybe a -> a -> b) -> [a] -> [b]
+mapWithPrevious fn xs = zipWith fn previous xs
+  where previous = Nothing : map Just xs
+
+getAcronymLetter :: Maybe Char -> Char -> Maybe Char
+getAcronymLetter Nothing     curr      = Just curr
+getAcronymLetter (Just prev) curr
+  | isAlpha curr && not (isAlpha prev) = Just curr
+  | isUpper curr && not (isUpper prev) = Just curr
+  | otherwise                          = Nothing
