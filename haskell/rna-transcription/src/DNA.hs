@@ -1,6 +1,8 @@
-module DNA (toRNA) where
+module DNA
+  ( toRNA
+  ) where
 
-import Data.Traversable (mapM)
+import           Data.Traversable (mapM)
 
 toRNA :: String -> Maybe String
 toRNA = mapM toRNA'

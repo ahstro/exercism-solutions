@@ -1,4 +1,8 @@
-module Squares (difference, squareOfSums, sumOfSquares) where
+module Squares
+  ( difference
+  , squareOfSums
+  , sumOfSquares
+  ) where
 
 difference :: Integral a => a -> a
 difference n = squareOfSums n - sumOfSquares n
@@ -13,4 +17,4 @@ square :: Integral a => a -> a
 square n = n ^ 2
 
 naturals :: Integral a => a -> [a]
-naturals n = [1..n]
+naturals n = [1 .. n]

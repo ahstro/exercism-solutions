@@ -1,11 +1,13 @@
-module Bob (responseFor) where
+module Bob
+  ( responseFor
+  ) where
 
-import Data.Char (isLower, isAlpha, isSpace)
-import Data.List (all, any)
+import           Data.Char (isAlpha, isLower, isSpace)
+import           Data.List (all, any)
 
 responseFor :: String -> String
 responseFor xs
-  | all iSpace xs          = "Fine. Be that way!"
+  | all iSpace xs = "Fine. Be that way!"
   | any isAlpha xs && not (any isLower xs) = "Whoa, chill out!"
-  | (last $ last $ words xs) == '?'   = "Sure."
-  | otherwise                         = "Whatever."
+  | (last $ last $ words xs) == '?' = "Sure."
+  | otherwise = "Whatever."
