@@ -3,8 +3,17 @@ module Leap exposing (isLeapYear)
 
 isLeapYear : Int -> Bool
 isLeapYear year =
-    isEvenlyDivisibleBy 400 year
-        || (isEvenlyDivisibleBy 4 year && not (isEvenlyDivisibleBy 100 year))
+    let
+        dividesBy400 =
+            isEvenlyDivisibleBy 400 year
+
+        dividesBy100 =
+            isEvenlyDivisibleBy 100 year
+
+        dividesBy4 =
+            isEvenlyDivisibleBy 4 year
+    in
+    dividesBy400 || (dividesBy4 && not dividesBy100)
 
 
 isEvenlyDivisibleBy : Int -> Int -> Bool
