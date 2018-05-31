@@ -2,17 +2,20 @@ module Raindrops exposing (raindrops)
 
 
 raindrops : Int -> String
-raindrops number =
-    [ 3, 5, 7 ]
-        |> removeFactorsOf number
-        |> ifEmptyAdd number
-        |> List.map numberToString
-        |> String.concat
+raindrops amount =
+    ""
+        |> appendIf (isFactorOf amount 3) "Pling"
+        |> appendIf (isFactorOf amount 5) "Plang"
+        |> appendIf (isFactorOf amount 7) "Plong"
+        |> withDefault (toString amount)
 
 
-removeFactorsOf : Int -> List Int -> List Int
-removeFactorsOf number =
-    List.filter (isFactorOf number)
+appendIf : Bool -> appendable -> appendable -> appendable
+appendIf shouldAppend appendee appendable =
+    if shouldAppend then
+        appendable ++ appendee
+    else
+        appendable
 
 
 isFactorOf : Int -> Int -> Bool
@@ -20,25 +23,9 @@ isFactorOf dividend divisor =
     dividend % divisor == 0
 
 
-ifEmptyAdd : a -> List a -> List a
-ifEmptyAdd value list =
-    if List.isEmpty list then
-        value :: list
+withDefault : String -> String -> String
+withDefault default value =
+    if String.isEmpty value then
+        default
     else
-        list
-
-
-numberToString : Int -> String
-numberToString number =
-    case number of
-        3 ->
-            "Pling"
-
-        5 ->
-            "Plang"
-
-        7 ->
-            "Plong"
-
-        _ ->
-            Basics.toString number
+        value
