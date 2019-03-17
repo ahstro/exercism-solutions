@@ -1,12 +1,14 @@
 name: grade-school
-version: 0.1.0.2
+version: 1.0.0.4
 
 dependencies:
   - base
+  - containers
 
 library:
   exposed-modules: School
   source-dirs: src
+  ghc-options: -Wall
   # dependencies:
   # - foo       # List here the packages you
   # - bar       # want to use in your solution.
