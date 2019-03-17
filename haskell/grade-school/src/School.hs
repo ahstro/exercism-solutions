@@ -6,24 +6,21 @@ module School
   , sorted
   ) where
 
-import qualified Data.List       as List (insert)
-import qualified Data.Map.Strict as Map (Map, adjust, empty, insert, lookup,
-                                         toList, (!?))
-import           Data.Maybe      (fromMaybe)
+import           Control.Arrow   (second)
+import           Data.List       (sort)
+import qualified Data.Map.Strict as Map (Map, empty, findWithDefault,
+                                         insertWith, toAscList)
 
 type School = Map.Map Int [String]
 
 add :: Int -> String -> School -> School
-add gradeNum student school =
-  case school Map.!? gradeNum of
-    Nothing -> Map.insert gradeNum [student] school
-    Just _  -> Map.adjust (List.insert student) gradeNum school
+add gradeNum student = Map.insertWith (++) gradeNum [student]
 
 empty :: School
 empty = Map.empty
 
 grade :: Int -> School -> [String]
-grade gradeNum = fromMaybe [] . Map.lookup gradeNum
+grade gradeNum = sort . Map.findWithDefault [] gradeNum
 
 sorted :: School -> [(Int, [String])]
-sorted = Map.toList
+sorted = map (second sort) . Map.toAscList
